@@ -23,7 +23,7 @@
 
   2: How big is a pointer in size and why?
 
-    R: a pointer is 4 bytes, because its a system of 32 bits
+    R: a pointer is 8 bytes and is because its a 64 system
 
   3: What is a typedef use for?
     R: its a way yo give a name to a type
@@ -42,7 +42,7 @@
 
 int exam01();
 int exam02();
-int exam04();
+// int exam04();
 int exam05();
 int exam06();
 
@@ -57,7 +57,7 @@ int main()
     printf("--------------------ex02 ------------------------\n");
     exam02();
     printf("--------------------ex04 ------------------------\n");
-    exam04();
+    // exam04();
     printf("--------------------ex05 ------------------------\n");
     exam05();
     printf("--------------------ex06 ------------------------\n");
@@ -88,19 +88,22 @@ int main()
 
 /* ------------------- ANSWER STARTS HERE   ------------------ */
 
-float P = 21.5;
-float D = 1;
-char type = 'P';
+void convertMoney(float *money, char *type)
+{
+    float rate = 20.3;
+    float fee = 0.10;
 
-float *dollar = &P;
-float *pesos = &D;
-float quantity = 100.50;
-
-// float converter(*dollar == type && );
-
-// int convertMoney(float money, char type)
-//{
-// }
+    if (*type == 'D')
+    {
+        *money = (*money * rate) * (1 - fee);
+        *type = 'P';
+    }
+    else if (*type == 'P')
+    {
+        *money = (*money / rate) * (1 - fee);
+        *type = 'D';
+    }
+}
 
 /* ------------------- ANSWER STARTS HERE   ------------------ */
 
@@ -113,6 +116,8 @@ int exam01()
 
     /* ------------------- ANSWER STARTS HERE   ------------------ */
 
+    convertMoney(&money, &type);
+
     /* -------------------  ANSWER ENDS HERE    ------------------ */
     printf("Converted currency #2 is: %.2f %c\n", money, type);
 
@@ -121,7 +126,7 @@ int exam01()
     money = 500;
     printf("Original Currency #1 is: %.2f %c\n", money, type);
     /* ------------------- ANSWER STARTS HERE   ------------------ */
-    // call your function
+    convertMoney(&money, &type);
 
     /* -------------------  ANSWER ENDS HERE    ------------------ */
     printf("Converted currency #2 is: %.2f %c\n", money, type);
@@ -156,16 +161,18 @@ operations to determine the size.
 */
 /* ------------------- ANSWER STARTS HERE   ------------------ */
 
-int num = 1;
-char *binary_chain(char *binary_chain)
+void flipOddBits(char *binary_chain)
 {
-    if (binary_chain[num] == '1')
+    char *ptr = binary_chain;
+    int pos = 1;
+    while (*ptr)
     {
-        binary_chain[num] = '0';
-    }
-    else
-    {
-        binary_chain[num] = '1';
+        if (pos % 2 == 1)
+        {
+            *ptr = (*ptr == '1') ? '0' : '1';
+        }
+        ptr++;
+        pos++;
     }
 }
 
@@ -177,15 +184,10 @@ int exam02()
     printf("original chain =  001110111  | flipped chain = ");
 
     /* ------------------- ANSWER STARTS HERE   ------------------ */
+    flipOddBits(binary_chain);
+    printf("%s\n", binary_chain);
 
-    while
-    {
-
-        /* -------------------  ANSWER ENDS HERE    ------------------ */
-
-        printf("%s", binary_chain);
-        printf("\n");
-    }
+    /* -------------------  ANSWER ENDS HERE    ------------------ */
     return 0;
 }
 
@@ -193,6 +195,7 @@ int exam02()
 ################            15 pts         ################################
 Declare the MINUMUM number of function pointers required to be able to store
 the following functions in them. Use the typedef if needed */
+
 int welcometothejungle(int *num, char letra)
 {
     printf("%c", letra);
@@ -218,6 +221,8 @@ int triple_it(int num)
 /* Declare your function pointers here : */
 /* ------------------- ANSWER STARTS HERE   ------------------ */
 
+int (*function_pointers[4])() = {welcometothejungle, double_it, sort, triple_it};
+
 /* -------------------  ANSWER ENDS HERE    ------------------ */
 
 /* This is the end of exam03, nothing else to do */
@@ -238,30 +243,23 @@ int triple_it(int num)
 
   PS. Doing: int the_numbers[3] = {15,20,33}; is obviously NOT a good answer
 */
-int exam04()
-{
-    int the_numbers[3];
-    char the_letters[3];
 
-    /* ------------------- ANSWER STARTS HERE   ------------------ */
+// int exam04()
+//{
+//   int the_numbers[3];
+// char the_letters[3];
 
-    int a = 15;
-    int b = 20;
-    int c = 33;
+/* ------------------- ANSWER STARTS HERE   ------------------ */
 
-    int *a = &a;
-    int *b = &b;
-    int *c = &c;
+/* -------------------  ANSWER ENDS HERE    ------------------ */
 
-    /* -------------------  ANSWER ENDS HERE    ------------------ */
-
-    for (int i = 0; i < 3; i++)
-    {
-        printf("%d - %c \n", the_numbers[i], the_letters[i]);
-        print("Num of the list: %d\n", *(the_numbers + i));
-    };
-    return 0;
-}
+// for (int i = 0; i < 3; i++)
+//{
+// printf("%d - %c \n", the_numbers[i], the_letters[i]);
+// print("Num of the list: %d\n", *(the_numbers + i));
+//};
+//  return 0;
+//}
 
 /* ################          EX 05 :       ################################
    ################         20 pts         ################################
@@ -271,7 +269,7 @@ int exam04()
     argument 2 : other number (int)
 
   returns :  An intenger with the results of adding the number inside the struct
-             + the number passed as arugment 2.
+             + the number passed as argument 2.
 
   This exercise has 3 parts:
   Part 1: Define your struct
