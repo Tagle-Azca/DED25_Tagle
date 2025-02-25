@@ -196,9 +196,9 @@ int exam02()
 Declare the MINUMUM number of function pointers required to be able to store
 the following functions in them. Use the typedef if needed */
 
-int welcometothejungle(int *num, char letra)
+int welcometothejungle(int *num, char *letra)
 {
-    printf("%c", letra);
+    printf("%s", letra);
     return (100);
 }
 
@@ -353,6 +353,12 @@ Perhaps the solution for that exercise will come handy here ;)
 void *foo(void *all)
 {
     /* ------------------- ANSWER STARTS HERE   ------------------ */
+    void **ptr = all;
+    void *ptrToDouble = ptr[DOUBLE_OP];
+    void *ptrToTriple = ptr[TRIPLE_OP];
+    int *ptrToData = ptr[DATA];
+    int *ptrToDoubleRes = ptr[DOUBLE_RES];
+    int *ptrToTripleRes = ptr[TRIPLE_RES];
 
     /* -------------------  ANSWER ENDS HERE    ------------------ */
     return NULL;
