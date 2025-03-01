@@ -250,6 +250,28 @@ int (*function_pointers[4])() = {welcometothejungle, double_it, sort, triple_it}
 // char the_letters[3];
 
 /* ------------------- ANSWER STARTS HERE   ------------------ */
+int exam04()
+{
+    int *num_ptr = malloc(3 * sizeof(int));
+    char *char_ptr = malloc(3 * sizeof(char));
+
+    *(num_ptr) = 15;
+    *(num_ptr + 1) = 20;
+    *(num_ptr + 2) = 33;
+
+    *(char_ptr) = 'a';
+    *(char_ptr + 1) = 'z';
+    *(char_ptr + 2) = 'x';
+
+    for (int i = 0; i < 3; i++)
+    {
+        printf("%d - %c \n", *(num_ptr + i), *(char_ptr + i));
+    }
+
+    free(num_ptr);
+    free(char_ptr);
+    return 0;
+}
 
 /* -------------------  ANSWER ENDS HERE    ------------------ */
 
@@ -279,6 +301,29 @@ int (*function_pointers[4])() = {welcometothejungle, double_it, sort, triple_it}
   Part 3: Verify that everything works and complete exam05()
 */
 /* ------------------- ANSWER STARTS HERE   ------------------ */
+
+typedef struct
+{
+    int number;
+    char letter;
+} MyStruct;
+
+int add(void *ptr, int num)
+{
+    MyStruct *s = (MyStruct *)ptr;
+    return s->number + num;
+}
+
+int exam05()
+{
+    MyStruct example;
+    example.number = 42;
+    example.letter = 'X';
+
+    int result = add(&example, 10);
+    printf("Result of addition: %d\n", result);
+    return 0;
+}
 
 /* -------------------  ANSWER ENDS HERE    ------------------ */
 int exam05()
