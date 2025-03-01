@@ -5,105 +5,110 @@
 #define CLEAR printf("\033[0;0H\033[2J");
 
 void ex1_pointers_size();
+void ex2_pointer_operations();
 
 int main()
 {
-    CLEAR
-    printf("Hello world\n");
-    /* verify the size of the pointers */
-    ex1_pointers_size();
-    getchar();
-    printf("=+=+=+ # # # # =+=+=+ # # # # =+=+=+ \n");
-    // COMPLETE EXCERSICE ex_derefencing pointers HERE:
-    printf("... complete your excersice ....\n");
-    printf("=+=+=+ # # # # =+=+=+ # # # # =+=+=+ \n\n");
-    return 0;
+  CLEAR
+  printf("Hello world\n");
+  /* verify the size of the pointers */
+  ex1_pointers_size();
+  getchar();
+  printf("=+=+=+ # # # # =+=+=+ # # # # =+=+=+ \n");
+  // COMPLETE EXCERSICE ex_derefencing pointers HERE:
+  printf("... complete your excersice ....\n");
+  printf("=+=+=+ # # # # =+=+=+ # # # # =+=+=+ \n\n");
+
+  /* Call Exercise 2 */
+  ex2_pointer_operations();
+
+  return 0;
 }
 
 void ex1_pointers_size()
 {
-    /* This excercise verifies that the size of the pointer
-    is CONSTANT and does NOT change depending on where it points to.
-    The size of the pointer is based on the platform, and it is the number
-    of bytes required to address the memory space.
+  /* This excercise verifies that the size of the pointer
+  is CONSTANT and does NOT change depending on where it points to.
+  The size of the pointer is based on the platform, and it is the number
+  of bytes required to address the memory space.
 
-    In all 64 bit systems, this is always 8 bytes */
+  In all 64 bit systems, this is always 8 bytes */
 
-    printf(" = = = = = Ex 01 POINTERS BASICS = = = = = = \n");
-    char c = 'A';
-    char *ptr_c = &c;
+  printf(" = = = = = Ex 01 POINTERS BASICS = = = = = = \n");
+  char c = 'A';
+  char *ptr_c = &c;
 
-    int i = 1024;
-    int *ptr_i = &i;
+  int i = 1024;
+  int *ptr_i = &i;
 
-    /* Verify the size of the variables
-       sizeof() returns the size in bytes of what you pass in as arg
-       sizeof returns a long, so %ld is the right format option.
-    */
-    printf("size of c %ld \n"
-           "size of ptr_c %ld\n"
-           "size of i %ld\n"
-           "size of ptr_i %ld\n",
-           sizeof(c), sizeof(ptr_c), sizeof(i), sizeof(ptr_i));
-    printf(" = = = = = = = = = = = = = = = = = = = \n");
+  /* Verify the size of the variables
+     sizeof() returns the size in bytes of what you pass in as arg
+     sizeof returns a long, so %ld is the right format option.
+  */
+  printf("size of c %lu \n"
+         "size of ptr_c %lu\n"
+         "size of i %lu\n"
+         "size of ptr_i %lu\n",
+         sizeof(c), sizeof(ptr_c), sizeof(i), sizeof(ptr_i));
+  printf(" = = = = = = = = = = = = = = = = = = = \n");
 
-    getchar();
+  getchar();
 
-    /* Pointers can point to any kind of variable, even STRUCTS : */
-    // typedef
-    struct node
-    {
-        int a;
-        int b;
-        int c;
-    } node;
+  /* Pointers can point to any kind of variable, even STRUCTS : */
+  // typedef
+  struct node
+  {
+    int a;
+    int b;
+    int c;
+  };
 
-    struct node mynode;
-    struct node *ptr_node = &mynode;
+  struct node mynode;
+  struct node *ptr_node = &mynode;
 
-    printf("how big is a pointer to a struct ??");
-    getchar();
+  printf("how big is a pointer to a struct ??");
+  getchar();
 
-    printf("node size : %ld \n", sizeof(mynode));
-    printf("ptr to node size : %ld \n", sizeof(ptr_node));
-    printf(" = = = = = = = = = = = = = = = = = = = \n");
+  printf("node size : %lu \n", sizeof(mynode));
+  printf("ptr to node size : %lu \n", sizeof(ptr_node));
+  printf(" = = = = = = = = = = = = = = = = = = = \n");
 
-    /*  This node contains 3 ints:
-      We know then its size must be sizeof(int) x 3 = 12 bytes.
-      A pointer to node, is of size 8, just as ALL the pointers on this system. */
-    getchar();
+  /*  This node contains 3 ints:
+    We know then its size must be sizeof(int) x 3 = 12 bytes.
+    A pointer to node, is of size 8, just as ALL the pointers on this system. */
+  getchar();
 
-    /* lastly lets see where everything is in memory */
-    printf("the address of variable i = %p \n", &i);
-    printf("the value stored in ptr_i = %p \n", ptr_i);
-    printf("the value inside i = %d \n", i);
-    printf("the value that ptr_i points to = %d \n", *ptr_i);
-    // i
-    printf(" = = = = = = = = = = = = = = = = = = = \n");
-    getchar();
+  /* lastly lets see where everything is in memory */
+  printf("the address of variable i = %p \n", (void *)&i);
+  printf("the value stored in ptr_i = %p \n", (void *)ptr_i);
+  printf("the value inside i = %d \n", i);
+  printf("the value that ptr_i points to = %d \n", *ptr_i);
+  // i
+  printf(" = = = = = = = = = = = = = = = = = = = \n");
+  getchar();
 
-    /* we can do the same with chars */
-    char letter;
-    letter = 'A';
+  /* we can do the same with chars */
+  char letter;
+  letter = 'A';
 
-    char *char_ptr;
-    char_ptr = &letter;
+  char *char_ptr;
+  char_ptr = &letter;
 
-    *char_ptr = *char_ptr + 1;
-    printf("letter = %c\n", letter);
+  *char_ptr = *char_ptr + 1;
+  printf("letter = %c\n", letter);
 
-    /*What you CAN'T do is assign a pointer to another of a different type */
-    // char_ptr = ptr_i;
-    int a = 10;
-    int *ptr1 = &a;
-    int *ptr2 = &a;
-    int *ptr3 = &a;
+  /*What you CAN'T do is assign a pointer to another of a different type */
+  // char_ptr = ptr_i;
+  int a = 10;
+  int *ptr1 = &a;
+  int *ptr2 = &a;
+  int *ptr3 = &a;
 
-    getchar();
-    printf("the value is : %d\n", ((*ptr1) * 2) + 5);
-    printf("ptr1 lives in %p\n", ptr1);
-    printf("points to %d\n", ptr1);
-    printf("contains %d\n", *ptr1);
+  getchar();
+  printf("the value is : %d\n", ((*ptr1) * 2) + 5);
+  printf("ptr1 lives in %p\n", (void *)ptr1);
+  printf("points to %p\n", (void *)ptr1);
+  printf("contains %d\n", *ptr1);
 }
 
 /* Ex 2: Create a new function (call it from the main loop)
@@ -131,3 +136,32 @@ see what happens if you use the * on a pointer that is not intialized
 
 Finally print the value of the variable like normal.
 */
+
+void ex2_pointer_operations()
+{
+  printf(" = = = = = Ex 02 POINTER OPERATIONS = = = = = = \n");
+
+  int number;
+  int *ptr1, *ptr2, *ptr3;
+
+  // Step 1
+  ptr1 = &number;
+  *ptr1 = 10;
+  printf("Step 1: ptr1 lives in %p, points to %p, that contains %d\n",
+         (void *)&ptr1, (void *)ptr1, *ptr1);
+
+  // Step 2
+  ptr2 = &number;
+  *ptr2 *= 2;
+  printf("Step 2: ptr2 lives in %p, points to %p, that contains %d\n",
+         (void *)&ptr2, (void *)ptr2, *ptr2);
+
+  // Step 3
+  ptr3 = &number;
+  *ptr3 += 5;
+  printf("Step 3: ptr3 lives in %p, points to %p, that contains %d\n",
+         (void *)&ptr3, (void *)ptr3, *ptr3);
+
+  printf("Final value of number: %d\n", number);
+  printf(" = = = = = = = = = = = = = = = = = = = \n");
+}
