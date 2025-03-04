@@ -57,34 +57,29 @@ int main()
 
     */
 
-    char *messages[3];
-    messages[0] = (char *)malloc(8 * sizeof(char));
-    messages[1] = (char *)malloc(3 * sizeof(char));
-    messages[2] = (char *)malloc(21 * sizeof(char));
+        char **banner = malloc(sizeof(char *) * 3);
 
-    strcpy(messages[0], "WELCOME");
-    strcpy(messages[1], "TO");
-    strcpy(messages[2], "DATA STRUCTURE CLASS");
+    banner[0] = (char *)malloc(8 * sizeof(char));
+    banner[1] = (char *)malloc(3 * sizeof(char));
+    banner[2] = (char *)malloc(21 * sizeof(char));
+
+    strcpy(banner[0], "WELCOME");
+    strcpy(banner[1], "TO");
+    strcpy(banner[2], "DATA STRUCTURE CLASS");
 
     /* can you print it using pointer math :) ? */
-    for (int i = 0; i < 3; i++)
-    {
-        char *ptr = messages[i];
-        while (*ptr)
-        {
-            printf("%c", *ptr);
-            ptr++;
-        }
-        printf("\n");
-    }
+    char **charp = banner;
+    printf("%s %s %s\n", charp[0], charp[1], charp[2]);
 
     /* can you print it with brackers [] ? */
-    for (int i = 0; i < 3; i++)
-    {
-        printf("%s\n", messages[i]);
-    }
+    printf("%s %s %s\n", banner[0], banner[1], banner[2]);
 
     /* FREE everything we just created */
+
+    free(banner[0]);
+    free(banner[1]);
+    free(banner[2]);
+
     for (int i = 0; i < rows; i++)
     {
         free(matrix[i]);
@@ -93,7 +88,7 @@ int main()
 
     for (int i = 0; i < 3; i++)
     {
-        free(messages[i]);
+        free(banner[i]);
     }
 
     return 0;

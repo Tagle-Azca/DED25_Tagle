@@ -245,7 +245,7 @@ void selectCharacters(Character *team)
     printf("\nSelect your 2 characters:\n\n");
     for (int i = 0; i < MAX_CHARACTERS; i++)
     {
-        printf("%d. %s (%s)\n", i + 1, characterPool[i].name, characterPool[i].type);
+        printf("%d. %s (%s) %s\n", i + 1, characterPool[i].name, characterPool[i].type, characterPool[i].type);
     }
     for (int i = 0; i < TEAM_SIZE; i++)
     {
@@ -316,7 +316,8 @@ void autoSelectCharacters(Character *team)
 int coinToss()
 {
     int c;
-    printf("\nCoin toss! Choose 0=Heads, 1=Tails: ");
+    printf("\nCoin toss! Choose \n0=Heads, 1=Tails: ");
+
     scanf("%d", &c);
     int r = rand() % 2;
     if (r == c)
@@ -386,11 +387,13 @@ void combat(Character *pTeam, Character *aTeam)
         if (allDead(pTeam))
         {
             printf("\nAll your chars died! AI wins!\n\n");
+            printf("\nhow did you manage to lose against an ai?\n");
             break;
         }
         if (allDead(aTeam))
         {
             printf("\nAll AI are dead! You win!\n\n");
+            printf("\nI mean... its an ai after all\n\n");
             break;
         }
         if (pTeam[pIndex].health <= 0)
