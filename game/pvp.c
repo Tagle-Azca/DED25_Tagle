@@ -47,12 +47,12 @@ enum
 };
 
 Character characterPool[MAX_CHARACTERS] = {
-    {"Eryon", "Psychic", 140, 10, {{"Normal1", 8, NOEFFECT}, {"Normal2", 12, NOEFFECT}, {"Sleep1", 0, SLEEP}, {"Sleep2", 0, SLEEP}}, 0, 0, NULL},
-    {"Lira", "Psychic", 130, 8, {{"Normal1", 12, NOEFFECT}, {"Normal2", 10, NOEFFECT}, {"Sleep1", 0, SLEEP}, {"Sleep2", 0, SLEEP}}, 0, 0, NULL},
-    {"Gorrak", "Brute Force", 160, 12, {{"Normal1", 15, NOEFFECT}, {"Normal2", 20, NOEFFECT}, {"Guard1", 0, GUARD}, {"Guard2", 0, GUARD}}, 0, 0, NULL},
-    {"Tharja", "Brute Force", 170, 10, {{"Normal1", 15, NOEFFECT}, {"Normal2", 15, NOEFFECT}, {"Guard1", 0, GUARD}, {"Guard2", 0, GUARD}}, 0, 0, NULL},
-    {"Venomous", "Poison", 120, 5, {{"Normal1", 10, NOEFFECT}, {"Normal2", 10, NOEFFECT}, {"Poison1", 12, POISON}, {"Poison2", 12, POISON}}, 0, 0, NULL},
-    {"Toxin", "Poison", 125, 7, {{"Normal1", 12, NOEFFECT}, {"Normal2", 8, NOEFFECT}, {"Poison1", 10, POISON}, {"Poison2", 10, POISON}}, 0, 0, NULL}};
+    {"Eryon", "Psychic", 140, 10, {{"gaslight", 10, NOEFFECT}, {"nostalgia", 10, NOEFFECT}, {"narcolepsy", 50, SLEEP}, {"depression", 33, SLEEP}}, 0, 0, NULL},
+    {"Lira", "Psychic", 130, 8, {{"gaslight", 10, NOEFFECT}, {"nostalgia", 10, NOEFFECT}, {"narcolepsy", 50, SLEEP}, {"depression", 33, SLEEP}}, 0, 0, NULL},
+    {"Gorrak", "Brute Force", 160, 12, {{"pressure", 15, NOEFFECT}, {"crush", 20, NOEFFECT}, {"peak pressure", 70, GUARD}, {"super kick", 70, GUARD}}, 0, 0, NULL},
+    {"Tharja", "Brute Force", 170, 10, {{"smash", 15, NOEFFECT}, {"trow", 15, NOEFFECT}, {"link attack", 70, GUARD}, {"broken link", 70, GUARD}}, 0, 0, NULL},
+    {"Venomous", "Poison", 120, 5, {{"Bite", 10, NOEFFECT}, {"Snake Bite", 10, NOEFFECT}, {"venemous bite", 50, POISON}, {"Super bite", 50, POISON}}, 0, 0, NULL},
+    {"Toxin", "Poison", 125, 7, {{"Punch", 12, NOEFFECT}, {"stamp", 8, NOEFFECT}, {"Poison cloud", 50, POISON}, {"poison smoke", 50, POISON}}, 0, 0, NULL}};
 
 void applyState(Character *target, int effectType, int duration)
 {
