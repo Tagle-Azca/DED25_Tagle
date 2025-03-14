@@ -165,7 +165,7 @@ int main()
     //  the ID of the newly created chicken MUST correspond to the slot
     //  ON SUCCESS the function returns 1. ON FAIL returns 0
 
-    int add_chicken_user(chicken * *farm, int farm_size)
+   /* int add_chicken_user(chicken * *farm, int farm_size)
     {
         for (int i = 0; i < farm_size; i++)
         {
@@ -174,11 +174,14 @@ int main()
                 farm[i] = create_chicken(i);
                 return 1;
             }
-        }
+        };
         return 0;
     };
 
     print_all(farm, FARMSIZE);
+    */
+  
+    int add_chicken_user()
 
     // FINAL TODO
     // Use a while / switch - case to the program to add user interaction to it.
