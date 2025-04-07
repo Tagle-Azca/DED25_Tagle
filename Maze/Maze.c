@@ -6,6 +6,7 @@ typedef struct Node
     int x, y;
     struct Node *previous, *next, *up, *down;
 } Node;
+//struct node test
 
 int **loadMaze(const char *fileName, int *rows, int *cols)
 {
