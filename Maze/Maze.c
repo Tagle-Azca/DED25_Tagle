@@ -4,7 +4,7 @@
 typedef struct Node
 {
     int x, y;
-    struct Node *previous;
+    struct Node *previous, *next, *up, *down;
 } Node;
 
 int **loadMaze(const char *fileName, int *rows, int *cols)
