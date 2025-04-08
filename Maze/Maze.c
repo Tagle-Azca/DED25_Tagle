@@ -6,7 +6,7 @@ typedef struct Node
     int x, y;
     struct Node *previous, *next, *up, *down;
 } Node;
-//struct node test
+// struct node test
 
 int **loadMaze(const char *fileName, int *rows, int *cols)
 {
@@ -14,14 +14,12 @@ int **loadMaze(const char *fileName, int *rows, int *cols)
     if (!file)
         return NULL;
 
-    
-    if (fscanf(file, "%d %d", rows, cols) != 2){
+    if (fscanf(file, "%d %d", rows, cols) != 2)
+    {
         fclose(file);
         return NULL;
     }
 
-
-    
     int r = 0, c = 0;
     char line[1024];
 
@@ -50,7 +48,6 @@ int **loadMaze(const char *fileName, int *rows, int *cols)
     int **maze = malloc(*rows * sizeof(int *));
     for (int i = 0; i < *rows; i++)
         maze[i] = malloc(*cols * sizeof(int));
-
 
     for (int i = 0; i < *rows; i++)
     {
@@ -126,7 +123,7 @@ int main()
 {
     int rows, cols;
 
-    int **maze = loadMaze("/Users/isaianayala/Documents/GitHub/Estructuras-de-datos---Isaian/DED25_Tagle/Maze/Maze.txt", &rows, &cols);
+    int **maze = loadMaze("./Maze.txt", &rows, &cols);
     if (!maze)
         return 1;
 
