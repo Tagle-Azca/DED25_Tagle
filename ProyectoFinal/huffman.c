@@ -31,7 +31,7 @@ boolean compare_char(void *a, void *b){
 }
 
 map *getFrequencies(const char *text){
-    map *freqMap = map_create(256, convert_char, compare_char);
+    map *freqMap = map_create(CHAR_SET_SIZE, convert_char, compare_char);
     for (int i = 0; text[i] != '\0'; i++){
         char c = text[i];
         char *key = malloc(sizeof(char));
@@ -57,7 +57,7 @@ map *getFrequencies(const char *text){
 
 Node *buildHuffmanTree(map *freqMap)
 {
-    pq *queue = pq_create(256, cmp_nodes);
+    pq *queue = pq_create(CHAR_SET_SIZE, cmp_nodes);
     Node *left, *right, *top;
     
     for (int i = 0; i < CHAR_SET_SIZE; i++)
